@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% block content %}
+<h2>page d'index</h2>
+{% if user.is_anonymous %}
+  <p>utilisateur : Aucun</p>
+  <a href="{% url 'loginPage' %}">Se connecter</a>
+{% endif %}
+{% if user.is_authenticated %}
+  <p>utilisateur : {{request.user}}</p>
+  <a href="{% url 'logoutCurrentUser' %}">Se deconnecter</a>
+{% endif %}
+<form method="post" action={% url 'indexPage' %} >
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit"/>
+</form>
+{% endblock %}

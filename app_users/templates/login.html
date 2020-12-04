@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% block content %}
+  <form method="POST"  role="form" action="">
+  {% csrf_token %}
+  <input type="text" name="username" placeholder="Nom d’utilisateur">
+  <input type="password" name="password" placeholder="Mot de passe">
+  <input type="submit" value="Connectez vous" />
+  </form>
+  {% for message in messages %}
+    <p> {{message}} </p>
+  {% endfor %}
+  <div class="mt-4">
+    <div class="links">
+      Pas de compte ? <a href="{% url 'registerPage' %}">créez en un</a>
+    </div>
+  </div>
+{% endblock %}
