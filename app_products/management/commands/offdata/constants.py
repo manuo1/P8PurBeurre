@@ -7,7 +7,7 @@ API_OFF_PARAMS = {
     'page': 1,
     'page_size': 1000
     }
-MAXIMUM_QUANTITY_OF_CATEGORIES_TO_KEEP_PER_PRODUCT = 4
+MAXIMUM_QUANTITY_OF_CATEGORIES_TO_KEEP_PER_PRODUCT = 6
 ESSENTIAL_PRODUCT_DATA = [
     'product_name_fr',
     'nutrition_grade_fr',

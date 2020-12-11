@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% block content %}
+<h2>Recherche :</h2>
+{% if matching_list %}
+  <ul>
+    {% for product in matching_list %}
+    <li>
+      <a href= "{% url 'substitutesPage' selected_product_id=product.id  %}">
+        {{ product.product_name}} ({{ product.nutriscore}})
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  Désolé nous n'avons pas trouvé de produit correspondant à votre recherche :
+  {{ searched_product }}
+{% endif %}
+{% endblock %}

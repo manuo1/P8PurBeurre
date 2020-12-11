@@ -1,9 +1,7 @@
 {% extends 'base.html'%}
 {% block content %}
-<h3>REGISTER</h3>
-
+<h3>Création d'un compte utilisateur</h3>
 <form method="POST" action="">
-
   {% csrf_token %}
   {{form.as_p}}
   <input type="submit" name="Create User" value="Créer votre compte">
@@ -13,5 +11,4 @@
     Déja un compte ? <a href="{% url 'loginPage' %}">Connectez vous</a>
   </div>
 </div>
-
 {% endblock %}

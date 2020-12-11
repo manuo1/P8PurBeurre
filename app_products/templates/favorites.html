@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+{% block content %}
+<h2>Mes Aliments</h2>
+{% for message in messages %}
+  <p> {{message}} </p>
+{% endfor %}
+{% if current_user_favorites_list %}
+  <ul>
+    {% for product in current_user_favorites_list %}
+    <li>{{ product.product_name}} ( {{ product.nutriscore }} )
+        <a href= "{% url 'productDetailsPage' selected_product_id=product.id  %}">
+        | Voir ce produit
+        </a>
+    </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  Vous n’avez encore pas d’aliment sauvegardé.
+{% endif %}
+{% endblock %}

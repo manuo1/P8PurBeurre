@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class FoodCategory(models.Model):
     category_name = models.CharField(max_length=300, unique=True)
     def __str__(self):

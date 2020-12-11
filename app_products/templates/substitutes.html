@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+{% block content %}
+<h2>Résultats:</h2>
+<h4>
+    {{ product_to_substitute.product_name }}
+    ( {{ product_to_substitute.nutriscore }} ) :
+</h4>
+{% if substitutes_list %}
+  <ul>
+    {% for product in substitutes_list %}
+    <li>{{ product.product_name}} ( {{ product.nutriscore }} )
+        <a href= "{% url 'productDetailsPage' selected_product_id=product.id  %}">
+        | Voir ce produit
+        </a>
+        <a href= "{% url 'FavoritesPage' product_to_save_id=product.id  %}">
+        | Ajouter aux favorits
+        </a>
+    </li>
+    {% endfor %}
+  </ul>
+{% else %}
+Désolé nous n'avons pas trouvé de substitut correspondant à votre recherche
+{% endif %}
+{% endblock %}

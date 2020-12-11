@@ -1,3 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from app_products.models import FoodProduct
 
-# Create your models here.
+class User(AbstractUser):
+    favorites = models.ManyToManyField(FoodProduct)

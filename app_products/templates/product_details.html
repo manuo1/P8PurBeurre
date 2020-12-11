@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+{% block content %}
+{% if product_to_display %}
+<h2>Page Aliment</h2>
+
+   <h4>{{ product_to_display.product_name}} :</h4>
+  <ul>
+    <li>nutriscore: {{ product_to_display.nutriscore}} </li>
+    <li>Energie (kj):  {{ product_to_display.energy_kj}} </li>
+    <li>Energie (kcal):  {{ product_to_display.energy_kcal}} </li>
+    <li>Protéines (g):  {{ product_to_display.protein}} </li>
+    <li>Glucides (g):  {{ product_to_display.glucid}} </li>
+    <li>Lipides (g):  {{ product_to_display.lipid}} </li>
+    <li>Fibres (g):  {{ product_to_display.fiber}} </li>
+    <li>Sodium (g):  {{ product_to_display.salt}} </li>
+    <li>
+      <a href= "https://fr.openfoodfacts.org/produit/{{ product_to_display.barcode }}" target='_blank'>
+      Voir la fiche d'Open Food Facts
+      </a>
+    </li>
+  </ul>
+<a href= "{% url 'FavoritesPage' product_to_save_id=product_to_display.id  %}">
+Ajouter aux favorits
+</a>
+{% else %}
+  Une Erreur est servenue
+{% endif %}
+{% endblock %}

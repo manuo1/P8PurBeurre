@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from app_products.forms import ProductSearchForm
 from .forms import PersonalUserCreationForm
 
 def registerPage(request):
@@ -14,9 +15,11 @@ def registerPage(request):
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('username')
-            messages.success(request, 'Un nouveau compte viens d\'etre créé pour ' + user )
+            messages.success(request,
+                        'Un nouveau compte vient d\'être créé pour ' + user )
             return redirect('loginPage')
-    context = {'form': form}
+    context = { 'search_form': ProductSearchForm(),
+                'form': form}
     return render(request, 'register.html', context)
 
 def loginPage(request):
@@ -26,17 +29,25 @@ def loginPage(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
+        next_url = request.GET.get('next', '/')
         if user is not None:
             login(request, user)
-            return redirect('indexPage')
+            if next_url != '/':
+                return redirect(next_url)
+            return redirect('profilePage')
         else:
-            messages.info(request, 'Nom d\'utilisateur OU mot de passe incorrect')
-    context = {}
+            messages.error(request,
+                            'Nom d\'utilisateur OU mot de passe incorrect')
+    context = { 'search_form': ProductSearchForm()}
     return render(request, 'login.html', context)
 
-@login_required(login_url='loginPage')
 def logoutCurrentUser(request):
     if request.user.is_anonymous:
         return redirect('indexPage')
     logout(request)
     return redirect('indexPage')
+
+@login_required()
+def profile(request):
+    context = { 'search_form': ProductSearchForm()}
+    return render(request, 'profile.html', context)
