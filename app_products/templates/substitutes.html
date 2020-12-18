@@ -12,7 +12,7 @@
         <a href= "{% url 'productDetailsPage' selected_product_id=product.id  %}">
         | Voir ce produit
         </a>
-        <a href= "{% url 'FavoritesPage' product_to_save_id=product.id  %}">
+        <a href= "{% url 'AddFavorites' product_to_save_id=product.id  %}">
         | Ajouter aux favorits
         </a>
     </li>

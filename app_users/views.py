@@ -38,12 +38,11 @@ def loginPage(request):
         else:
             messages.error(request,
                             'Nom d\'utilisateur OU mot de passe incorrect')
-    context = { 'search_form': ProductSearchForm()}
+    context = { 'search_form': ProductSearchForm() }
     return render(request, 'login.html', context)
 
+@login_required()
 def logoutCurrentUser(request):
-    if request.user.is_anonymous:
-        return redirect('indexPage')
     logout(request)
     return redirect('indexPage')
 

@@ -15,12 +15,14 @@ def search(request):
     if request.method == 'POST':
         search_form = ProductSearchForm(request.POST)
         if search_form.is_valid():
-            searched_product =search_form.cleaned_data.get('search')
+            searched_product = search_form.cleaned_data.get('search')
             matching_list = search_for_matching_products_to(searched_product)
             context = { 'search_form': ProductSearchForm(),
                         'searched_product': searched_product,
                         'matching_list':  matching_list }
             return render(request, 'search.html', context)
+    context = { 'search_form': ProductSearchForm()}
+    return render(request, 'search.html', context)
 
 def substitutes(request, selected_product_id):
         product_to_substitute = get_object_or_404(  FoodProduct,
@@ -39,16 +41,15 @@ def product_details(request, selected_product_id):
     return render(request, 'product_details.html', context)
 
 @login_required()
-def favorites(request, product_to_save_id=''):
+def favorites(request, product_to_save_id = None):
     """get current user"""
     User = get_user_model()
     current_user = request.user
     current_user_favorites_list = []
-    message = ''
-    if product_to_save_id:
-        #get product to save
+    if product_to_save_id != None:
+        """get product to save"""
         product_to_save = get_object_or_404(FoodProduct,id=product_to_save_id)
-        #Associate the product with current user
+        """Associate the product with current user"""
         if current_user.favorites.filter(id=product_to_save.id).exists():
             messages.error(request,
                     product_to_save.product_name + ' déja dans vos favorits' )
@@ -59,10 +60,16 @@ def favorites(request, product_to_save_id=''):
 
     current_user_favorites_list = current_user.favorites.all()
     context = { 'search_form': ProductSearchForm(),
-                'message': message,
                 'current_user_favorites_list':  current_user_favorites_list }
     return render(request, 'favorites.html', context)
 
+def legal_disclaimers(request):
+    context = { 'search_form': ProductSearchForm()}
+    return render(request, 'legal_disclaimers.html', context)
+
+def contact(request):
+    context = { 'search_form': ProductSearchForm()}
+    return render(request, 'index.html', context)
 
 def search_for_matching_products_to(searched_product):
     """ get the corresponding food products in database """
