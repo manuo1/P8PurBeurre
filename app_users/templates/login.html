@@ -9,7 +9,7 @@
         <h2 class="text-white font-weight-bold">Connectez-vous pour plus de fonctionnalités</h2>
         <hr class="divider light my-4" />
         {% for message in messages %}
-        <p> {{message}} </p>
+        <p id="login-messages"> {{message}} </p>
         {% endfor %}
       </div>
       <div class="col-lg-8 align-self-baseline">
@@ -17,22 +17,22 @@
           {% csrf_token %}
           <div class='row'>
             <div class='col-md-6 py-1'>
-              <input class="form-control" type="text" name="username" placeholder="Nom d’utilisateur">
+              <input class="form-control" type="text" name="username" id="id_username" placeholder="Nom d’utilisateur">
             </div>
             <div class='col-md-6 py-1'>
-              <input class="form-control" type="password" name="password" placeholder="Mot de passe">
+              <input class="form-control" type="password" name="password" id="id_password" placeholder="Mot de passe">
             </div>
           </div>
           <div class='row'>
             <div class='col py-1'>
-              <input class="btn btn-primary btn-block" type="submit" value="Se Connecter" />
+              <input class="btn btn-primary btn-block" type="submit" id="button-login-submit" value="Se Connecter" />
             </div>
           </div>
         </form>
         <hr class="divider light my-4" />
         <div class='row'>
           <div class='col py-1'>
-            <a href="{% url 'registerPage' %}" class="btn btn-info btn-block">Créer un Compte</a>
+            <a href="{% url 'registerPage' %}" class="btn btn-info btn-block" id="button-create-account" >Créer un Compte</a>
           </div>
         </div>
       </div>
