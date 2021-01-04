@@ -20,6 +20,7 @@ def registerPage(request):
             return redirect('loginPage')
     context = { 'search_form': ProductSearchForm(),
                 'form': form}
+
     return render(request, 'register.html', context)
 
 def loginPage(request):

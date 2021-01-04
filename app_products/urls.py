@@ -16,7 +16,5 @@ urlpatterns = [
     path('favorites/<int:product_to_save_id>',
             views.favorites, name ='AddFavorites'),
     path('legal_disclaimers/',
-            views.legal_disclaimers, name ='LegalDisclaimersPages'),
-    path('contact/',
-            views.contact, name ='contact')
+            views.legal_disclaimers, name ='LegalDisclaimersPages')
 ]

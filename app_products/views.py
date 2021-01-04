@@ -16,7 +16,13 @@ def search(request):
         search_form = ProductSearchForm(request.POST)
         if search_form.is_valid():
             searched_product = search_form.cleaned_data.get('search')
-            matching_list = search_for_matching_products_to(searched_product)
+            matching_list = FoodProduct.objects.annotate(
+                            search= SearchVector('product_name')
+                            ).filter(
+                            search= SearchQuery(searched_product)
+                            ).order_by('product_name')
+            if len(matching_list)>9:
+                matching_list = matching_list[:9]
             context = { 'search_form': ProductSearchForm(),
                         'searched_product': searched_product,
                         'matching_list':  matching_list }
@@ -25,66 +31,8 @@ def search(request):
     return render(request, 'search.html', context)
 
 def substitutes(request, selected_product_id):
-        product_to_substitute = get_object_or_404(  FoodProduct,
-                                                    id=selected_product_id)
-        substitutes_list = search_for_substitutes_to(product_to_substitute)
-        context = { 'search_form': ProductSearchForm(),
-                    'product_to_substitute': product_to_substitute,
-                    'substitutes_list':  substitutes_list }
-        return render(request, 'substitutes.html', context)
-
-def product_details(request, selected_product_id):
-    product_to_display = get_object_or_404(
-                                FoodProduct, id=selected_product_id)
-    context = { 'search_form': ProductSearchForm(),
-                'product_to_display': product_to_display}
-    return render(request, 'product_details.html', context)
-
-@login_required()
-def favorites(request, product_to_save_id = None):
-    """get current user"""
-    User = get_user_model()
-    current_user = request.user
-    current_user_favorites_list = []
-    if product_to_save_id != None:
-        """get product to save"""
-        product_to_save = get_object_or_404(FoodProduct,id=product_to_save_id)
-        """Associate the product with current user"""
-        if current_user.favorites.filter(id=product_to_save.id).exists():
-            messages.error(request,
-                    product_to_save.product_name + ' déja dans vos favorits' )
-        else:
-            current_user.favorites.add(product_to_save)
-            messages.success(request,
-                    product_to_save.product_name + ' ajouté à vos favorits' )
-
-    current_user_favorites_list = current_user.favorites.all()
-    context = { 'search_form': ProductSearchForm(),
-                'current_user_favorites_list':  current_user_favorites_list }
-    return render(request, 'favorites.html', context)
-
-def legal_disclaimers(request):
-    context = { 'search_form': ProductSearchForm()}
-    return render(request, 'legal_disclaimers.html', context)
-
-def contact(request):
-    context = { 'search_form': ProductSearchForm()}
-    return render(request, 'index.html', context)
-
-def search_for_matching_products_to(searched_product):
-    """ get the corresponding food products in database """
-    vector = SearchVector('product_name')
-    query = SearchQuery(searched_product)
-    matching_list = FoodProduct.objects.annotate(search=vector
-                ).filter(search=query
-                ).order_by('product_name')
-    if len(matching_list)>8:
-        matching_list = matching_list[:9]
-    return matching_list
-
-def search_for_substitutes_to(product_to_substitute):
-    """ select the products with the most common categories
-        with the product to be substituted and better nutriscore"""
+    product_to_substitute = get_object_or_404(  FoodProduct,
+                                                id=selected_product_id)
     substitutes_list= []
     product_to_substitute_categories = product_to_substitute.categories.all()
     product_to_substitute_nutriscore = product_to_substitute.nutriscore
@@ -104,4 +52,41 @@ def search_for_substitutes_to(product_to_substitute):
     """ keeps only 9 results """
     if len(substitutes_list)>8:
         substitutes_list = substitutes_list[:9]
-    return substitutes_list
+    context = { 'search_form': ProductSearchForm(),
+                'product_to_substitute': product_to_substitute,
+                'substitutes_list':  substitutes_list }
+    return render(request, 'substitutes.html', context)
+
+def product_details(request, selected_product_id):
+    product_to_display = get_object_or_404(
+                                FoodProduct, id=selected_product_id)
+    context = { 'search_form': ProductSearchForm(),
+                'product_to_display': product_to_display}
+    return render(request, 'product_details.html', context)
+
+@login_required()
+def favorites(request, product_to_save_id = None):
+    """get current user"""
+    User = get_user_model()
+    current_user = request.user
+    current_user_favorites_list = []
+    product_to_save = None
+    if product_to_save_id != None:
+        """get product to save"""
+        product_to_save = get_object_or_404(FoodProduct,id=product_to_save_id)
+        """Associate the product with current user"""
+        if current_user.favorites.filter(id=product_to_save.id).exists():
+            messages.error(request,'déja dans vos favorits' )
+        else:
+            current_user.favorites.add(product_to_save)
+            messages.success(request,'ajouté à vos favorits' )
+
+    current_user_favorites_list = current_user.favorites.all()
+    context = { 'search_form': ProductSearchForm(),
+                'product_to_save': product_to_save,
+                'current_user_favorites_list':  current_user_favorites_list }
+    return render(request, 'favorites.html', context)
+
+def legal_disclaimers(request):
+    context = { 'search_form': ProductSearchForm()}
+    return render(request, 'legal_disclaimers.html', context)

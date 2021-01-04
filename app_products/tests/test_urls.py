@@ -2,7 +2,7 @@ from django.test import SimpleTestCase
 from django.urls import reverse, resolve
 from app_products.views import (    index, search, substitutes,
                                     product_details, favorites,
-                                    legal_disclaimers, contact)
+                                    legal_disclaimers)
 
 class TestAppProductsUrls(SimpleTestCase):
 
@@ -33,7 +33,3 @@ class TestAppProductsUrls(SimpleTestCase):
     def test_legal_disclaimers_url_resolves(self):
         url= reverse('LegalDisclaimersPages')
         self.assertEquals(resolve(url).func, legal_disclaimers)
-
-    def test_contact_url_resolves(self):
-        url= reverse('contact')
-        self.assertEquals(resolve(url).func, contact)
