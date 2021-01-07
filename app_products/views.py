@@ -14,6 +14,7 @@ def index(request):
 def search(request):
     if request.method == 'POST':
         search_form = ProductSearchForm(request.POST)
+        print(search_form)
         if search_form.is_valid():
             searched_product = search_form.cleaned_data.get('search')
             matching_list = FoodProduct.objects.annotate(

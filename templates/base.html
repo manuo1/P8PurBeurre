@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +8,6 @@
     <meta name="author" content="" />
     <title>Pur Beurre</title>
     <!-- Favicon-->
-    {% load static %}
     <link rel="icon" type="image/x-icon" href="{% static '/assets/img/favicon.ico'%}" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
@@ -32,11 +32,11 @@
           <ul class="navbar-nav ml-auto align-items-center list-group-horizontal">
             <li class="nav-item flex-fill"><form method="post" action={% url 'search' %} >{% csrf_token %}{{ search_form.search }}</form></li>
             {% if user.is_authenticated %}
-            <li><a class="js-scroll-trigger" href="{% url 'profilePage' %}"> <i class="fas fa-2x fa-user text-primary mx-2" title="Mon Compte" id="button-profile"></i></a></li>
-            <li><a class="js-scroll-trigger" href="{% url 'FavoritesPage' %}"> <i class="fas fa-2x fa-carrot text-primary mx-2" title="Mes Aliments" id="button-favorites"></i></a></li>
-            <li><a class="js-scroll-trigger" href="{% url 'logoutCurrentUser' %}"> <i class="fas fa-2x fa-sign-out-alt text-primary mx-2 sm-my-1" title="Déconnexion" id="button-logout"></i></a></li>
+            <li><a class="js-scroll-trigger" href="{% url 'profilePage' %}"  id="button-profile"> <i class="fas fa-2x fa-user text-primary mx-2" title="Mon Compte"></i></a></li>
+            <li><a class="js-scroll-trigger" href="{% url 'FavoritesPage' %}" id="button-favorites"> <i class="fas fa-2x fa-carrot text-primary mx-2" title="Mes Aliments"></i></a></li>
+            <li><a class="js-scroll-trigger" href="{% url 'logoutCurrentUser' %}" id="button-logout"> <i class="fas fa-2x fa-sign-out-alt text-primary mx-2 sm-my-1" title="Déconnexion" ></i></a></li>
             {% else %}
-            <li class="nav-item"><a class="js-scroll-trigger" href="{% url 'loginPage' %}"> <i class="fas fa-2x fa-user-secret text-primary ml-4" title="Connectez-vous" id="button-login"></i></a></li>
+            <li class="nav-item"><a class="js-scroll-trigger" href="{% url 'loginPage' %}" id="button-login"> <i class="fas fa-2x fa-user-secret text-primary ml-4" title="Connectez-vous" ></i></a></li>
             {% endif %}
           </ul>
         </div>

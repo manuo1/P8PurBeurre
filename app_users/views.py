@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
 from app_products.forms import ProductSearchForm
 from .forms import PersonalUserCreationForm
 
@@ -26,10 +25,11 @@ def registerPage(request):
 def loginPage(request):
     if request.user.is_authenticated:
         return redirect('indexPage')
+
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
+        user = authenticate( username=username, password=password)
         next_url = request.GET.get('next', '/')
         if user is not None:
             login(request, user)

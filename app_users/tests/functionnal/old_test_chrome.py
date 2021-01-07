@@ -50,7 +50,7 @@ class ChromeFunctionalTestCases(StaticLiveServerTestCase):
         self.assertTrue(
             self.driver.find_element_by_css_selector('#button-login')
         )
-"""
+
     def test_user_can_create_an_account(self):
         self.driver.get(self.live_server_url)
         self.driver.find_element_by_css_selector('#button-login').click()
@@ -93,4 +93,3 @@ class ChromeFunctionalTestCases(StaticLiveServerTestCase):
         email = self.driver.find_element_by_css_selector(
                                 '#profile-mail').get_attribute('innerHTML')
         self.assertEqual( email ," testusername@mail.com ")
-"""

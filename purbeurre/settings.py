@@ -24,7 +24,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ['.localhost', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'purbeurredb',
         'USER': 'manuo',
-        'PASSWORD': 'mdp',
+        'PASSWORD': os.environ['datatbases_password'],
         'HOST': 'localhost',
         'PORT': '5432',
     }
