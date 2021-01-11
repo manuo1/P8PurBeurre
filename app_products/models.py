@@ -1,4 +1,48 @@
 from django.db import models
+from django.contrib.postgres.search import SearchQuery, SearchVector
+from django.db.models import Count
+from django.shortcuts import get_object_or_404
+
+class FoodProductsManager(models.Manager):
+
+    def find_product_by_id(self, id):
+        product = get_object_or_404(FoodProduct,id=id)
+        return product
+
+    def find_matching_food_products (self, searched_product):
+        matching_list=[]
+        matching_list = FoodProduct.objects.annotate(
+                        search= SearchVector('product_name')
+                        ).filter(
+                        search= SearchQuery(searched_product)
+                        ).order_by('product_name')
+        if len(matching_list)>9:
+            matching_list = matching_list[:9]
+        return matching_list
+
+    def find_substitutes(self, product_to_substitute):
+        substitutes_list= []
+        product_to_substitute_categories = (
+            product_to_substitute.categories.all())
+        product_to_substitute_nutriscore = product_to_substitute.nutriscore
+
+        """
+        annotate :  annotate products with sum of common categories with
+                    the product to be substituted
+        filter: categories identical to those of the product to be substituted
+                and nutriscor lower than that of the product to be substituted
+        order : decreasing number of categories in common
+                and increasing nutriscore value
+        """
+        substitutes_list = FoodProduct.objects.annotate(
+                        common_categories=Count('categories')
+            ).filter(   categories__in=product_to_substitute_categories,
+                        nutriscore__lt=product_to_substitute_nutriscore
+            ).order_by('-common_categories', 'nutriscore')
+        if len(substitutes_list)>8:
+            substitutes_list = substitutes_list[:9]
+        return substitutes_list
+
 
 
 class FoodCategory(models.Model):

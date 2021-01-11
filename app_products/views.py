@@ -1,68 +1,40 @@
-from django.shortcuts import render, get_object_or_404
-from django.db.models import Count
+from django.shortcuts import render
 from django.contrib import messages
-from django.contrib.postgres.search import SearchQuery, SearchVector
 from django.contrib.auth.decorators import login_required
 from .forms import ProductSearchForm
-from app_products.models import FoodProduct
+from app_products.models import FoodProductsManager, FoodProduct
+from app_users.models import UsersManager
 from django.contrib.auth import get_user_model
 
+fp_manager = FoodProductsManager()
+u_manager = UsersManager()
+context = { 'search_form': ProductSearchForm() }
+
 def index(request):
-    context = {'search_form': ProductSearchForm()}
     return render(request, 'index.html', context)
 
 def search(request):
     if request.method == 'POST':
         search_form = ProductSearchForm(request.POST)
-        print(search_form)
         if search_form.is_valid():
             searched_product = search_form.cleaned_data.get('search')
-            matching_list = FoodProduct.objects.annotate(
-                            search= SearchVector('product_name')
-                            ).filter(
-                            search= SearchQuery(searched_product)
-                            ).order_by('product_name')
-            if len(matching_list)>9:
-                matching_list = matching_list[:9]
-            context = { 'search_form': ProductSearchForm(),
-                        'searched_product': searched_product,
+            matching_list = fp_manager.find_matching_food_products(
+                searched_product)
+            context = { 'searched_product': searched_product,
                         'matching_list':  matching_list }
             return render(request, 'search.html', context)
-    context = { 'search_form': ProductSearchForm()}
     return render(request, 'search.html', context)
 
 def substitutes(request, selected_product_id):
-    product_to_substitute = get_object_or_404(  FoodProduct,
-                                                id=selected_product_id)
-    substitutes_list= []
-    product_to_substitute_categories = product_to_substitute.categories.all()
-    product_to_substitute_nutriscore = product_to_substitute.nutriscore
-
-    """ annotate :  annotate products with sum of common categories with
-                    the product to be substituted
-        filter: categories identical to those of the product to be substituted
-                and nutriscor lower than that of the product to be substituted
-        order : decreasing number of categories in common
-                and increasing nutriscore value
-    """
-    substitutes_list = FoodProduct.objects.annotate(
-                    common_categories=Count('categories')
-        ).filter(   categories__in=product_to_substitute_categories,
-                    nutriscore__lt=product_to_substitute_nutriscore
-        ).order_by('-common_categories', 'nutriscore')
-    """ keeps only 9 results """
-    if len(substitutes_list)>8:
-        substitutes_list = substitutes_list[:9]
-    context = { 'search_form': ProductSearchForm(),
-                'product_to_substitute': product_to_substitute,
+    product_to_substitute = fp_manager.find_product_by_id(selected_product_id)
+    substitutes_list = fp_manager.find_substitutes(product_to_substitute)
+    context = { 'product_to_substitute': product_to_substitute,
                 'substitutes_list':  substitutes_list }
     return render(request, 'substitutes.html', context)
 
 def product_details(request, selected_product_id):
-    product_to_display = get_object_or_404(
-                                FoodProduct, id=selected_product_id)
-    context = { 'search_form': ProductSearchForm(),
-                'product_to_display': product_to_display}
+    product_to_display = fp_manager.find_product_by_id(selected_product_id)
+    context = { 'product_to_display': product_to_display}
     return render(request, 'product_details.html', context)
 
 @login_required()
@@ -70,24 +42,20 @@ def favorites(request, product_to_save_id = None):
     """get current user"""
     User = get_user_model()
     current_user = request.user
-    current_user_favorites_list = []
     product_to_save = None
+    current_user_favorites_list = u_manager.get_favorites_list(current_user)
     if product_to_save_id != None:
-        """get product to save"""
-        product_to_save = get_object_or_404(FoodProduct,id=product_to_save_id)
-        """Associate the product with current user"""
-        if current_user.favorites.filter(id=product_to_save.id).exists():
+        product_to_save = fp_manager.find_product_by_id(product_to_save_id)
+        if product_to_save in current_user_favorites_list:
             messages.error(request,'déja dans vos favorits' )
         else:
-            current_user.favorites.add(product_to_save)
+            u_manager.add_to_favorites_list(current_user,product_to_save)
             messages.success(request,'ajouté à vos favorits' )
-
-    current_user_favorites_list = current_user.favorites.all()
-    context = { 'search_form': ProductSearchForm(),
-                'product_to_save': product_to_save,
+            current_user_favorites_list = u_manager.get_favorites_list(
+                current_user)
+    context = { 'product_to_save': product_to_save,
                 'current_user_favorites_list':  current_user_favorites_list }
     return render(request, 'favorites.html', context)
 
 def legal_disclaimers(request):
-    context = { 'search_form': ProductSearchForm()}
     return render(request, 'legal_disclaimers.html', context)

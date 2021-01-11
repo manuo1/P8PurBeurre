@@ -21,7 +21,6 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
             options=firefox_options,
         )
         cls.driver.implicitly_wait(30)
-        cls.driver.maximize_window()
 
     @classmethod
     def tearDownClass(cls):
@@ -50,7 +49,7 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
         self.assertTrue(
             self.driver.find_element_by_css_selector('#button-login')
         )
-
+        
     def test_user_can_create_an_account(self):
         self.driver.get(self.live_server_url)
         self.driver.find_element_by_css_selector('#button-login').click()
