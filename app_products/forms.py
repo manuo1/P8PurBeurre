@@ -2,7 +2,6 @@ from django import forms
 
 
 class ProductSearchFormManager(forms.Form):
-
     def get_search_in(self,request_post):
         searched_product = None
         search_form = ProductSearchForm(request_post)

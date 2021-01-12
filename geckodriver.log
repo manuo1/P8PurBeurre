@@ -957,3 +957,18 @@ JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: 
 
 ###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1610395176451	geckodriver	INFO	Listening on 127.0.0.1:50239
+1610395179455	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "window-size=1920x1080" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofileUGAfrd"
+*** You are running in headless mode.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1610395181946	Marionette	INFO	Listening on port 50247
+1610395182104	Marionette	WARN	TLS certificate errors will be ignored for this session
+1610395192800	Marionette	INFO	Stopped listening on port 50247
+1610395193685	geckodriver	INFO	Listening on 127.0.0.1:50323
+1610395196704	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofileomLx19"
+*** You are running in headless mode.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1610395198722	Marionette	INFO	Listening on port 50331
+1610395198837	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+1610395204362	Marionette	INFO	Stopped listening on port 50331

@@ -9,12 +9,12 @@ class FoodProductsManager(models.Manager):
         product = get_object_or_404(FoodProduct,id=id)
         return product
 
-    def find_matching_food_products (self, searched_product):
+    def find_matching_food_products_to(self, searched_product_name):
         matching_list=[]
         matching_list = FoodProduct.objects.annotate(
                         search= SearchVector('product_name')
                         ).filter(
-                        search= SearchQuery(searched_product)
+                        search= SearchQuery(searched_product_name)
                         ).order_by('product_name')
         if len(matching_list)>9:
             matching_list = matching_list[:9]

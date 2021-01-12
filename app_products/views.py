@@ -17,11 +17,12 @@ def index(request):
 
 def search(request):
     if request.method == 'POST':
-        searched_product = f_manager.get_search_in(request.POST)
-        matching_list = fp_manager.find_matching_food_products(
-            searched_product)
+        searched_product_name = f_manager.get_search_in(request.POST)
+        matching_list = fp_manager.find_matching_food_products_to(
+                        searched_product_name
+                        )
         context.update({
-            'searched_product': searched_product,
+            'searched_product': searched_product_name,
             'matching_list':  matching_list
         })
     return render(request, 'search.html', context)
