@@ -37,6 +37,7 @@ class ChromeFunctionalTestCases(StaticLiveServerTestCase):
         )
 
     def test_user_can_connect_and_disconnect(self):
+        print('TEST CHROME')
         self.driver.get(self.live_server_url)
         self.driver.find_element_by_css_selector('#button-login').click()
         self.driver.find_element_by_css_selector('#id_username').send_keys(

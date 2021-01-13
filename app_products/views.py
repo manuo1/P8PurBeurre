@@ -13,14 +13,15 @@ f_manager = ProductSearchFormManager()
 context = { 'search_form': ProductSearchForm() }
 
 def index(request):
+    print('index')
     return render(request, 'index.html', context)
 
 def search(request):
+    print('search')
     if request.method == 'POST':
         searched_product_name = f_manager.get_search_in(request.POST)
         matching_list = fp_manager.find_matching_food_products_to(
-                        searched_product_name
-                        )
+                        searched_product_name)
         context.update({
             'searched_product': searched_product_name,
             'matching_list':  matching_list
@@ -28,8 +29,9 @@ def search(request):
     return render(request, 'search.html', context)
 
 def substitutes(request, selected_product_id):
+    print('substitutes')
     product_to_substitute = fp_manager.find_product_by_id(selected_product_id)
-    substitutes_list = fp_manager.find_substitutes(product_to_substitute)
+    substitutes_list = fp_manager.find_substitutes_to(product_to_substitute)
     context.update({
         'product_to_substitute': product_to_substitute,
         'substitutes_list':  substitutes_list

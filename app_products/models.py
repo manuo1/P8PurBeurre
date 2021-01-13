@@ -20,7 +20,7 @@ class FoodProductsManager(models.Manager):
             matching_list = matching_list[:9]
         return matching_list
 
-    def find_substitutes(self, product_to_substitute):
+    def find_substitutes_to(self, product_to_substitute):
         substitutes_list= []
         product_to_substitute_categories = (
             product_to_substitute.categories.all())
