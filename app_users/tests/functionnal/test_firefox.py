@@ -1,4 +1,3 @@
-import sys
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.contrib.auth import get_user_model
 from django.conf import settings
@@ -6,7 +5,6 @@ from selenium import webdriver
 
 firefox_options = webdriver.FirefoxOptions()
 firefox_options.add_argument('--headless')
-firefox_options.add_argument('window-size=1920x1080')
 
 
 class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
@@ -17,7 +15,8 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
         super().setUpClass()
         cls.driver = webdriver.Firefox(
             executable_path=str(
-                    settings.BASE_DIR / 'webdrivers' / 'geckodriver.exe'),
+                settings.BASE_DIR / 'webdrivers' / 'geckodriver'
+            ),
             options=firefox_options,
         )
         cls.driver.implicitly_wait(30)
@@ -32,7 +31,7 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
         User.objects.create_user(
             username="testusername",
             password="testpassword",
-            email="testusername@mail.com"
+            email="testusername@mail.com",
         )
 
     def test_user_can_connect_and_disconnect(self):
@@ -44,17 +43,20 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
         self.driver.find_element_by_css_selector('#id_password').send_keys(
             "testpassword"
         )
-        self.driver.find_element_by_css_selector('#button-login-submit').click()
+        self.driver.find_element_by_css_selector(
+            '#button-login-submit'
+        ).click()
         self.driver.find_element_by_css_selector('#button-logout').click()
         self.assertTrue(
             self.driver.find_element_by_css_selector('#button-login')
         )
-        
+
     def test_user_can_create_an_account(self):
         self.driver.get(self.live_server_url)
         self.driver.find_element_by_css_selector('#button-login').click()
         self.driver.find_element_by_css_selector(
-                                    '#button-create-account').click()
+            '#button-create-account'
+        ).click()
         self.driver.find_element_by_css_selector('#id_username').send_keys(
             "testusername2"
         )
@@ -71,11 +73,14 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
             "testpassword2"
         )
         self.driver.find_element_by_css_selector(
-                                    '#button-create-submit').click()
+            '#button-create-submit'
+        ).click()
         message = self.driver.find_element_by_css_selector(
-                                '#login-messages').get_attribute('innerHTML')
-        self.assertEqual( message ,
-                " Un nouveau compte vient d'être créé pour testusername2 ")
+            '#login-messages'
+        ).get_attribute('innerHTML')
+        self.assertEqual(
+            message, " Un nouveau compte vient d'être créé pour testusername2 "
+        )
 
     def test_user_can_display_his_profile(self):
         self.driver.get(self.live_server_url)
@@ -87,8 +92,10 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
             "testpassword"
         )
         self.driver.find_element_by_css_selector(
-                                            '#button-login-submit').click()
+            '#button-login-submit'
+        ).click()
         self.driver.find_element_by_css_selector('#button-profile').click()
         email = self.driver.find_element_by_css_selector(
-                                '#profile-mail').get_attribute('innerHTML')
-        self.assertEqual( email ," testusername@mail.com ")
+            '#profile-mail'
+        ).get_attribute('innerHTML')
+        self.assertEqual(email, " testusername@mail.com ")

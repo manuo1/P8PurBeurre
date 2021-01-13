@@ -1,5 +1,4 @@
-"""
-WSGI config for purbeurre project.
+"""WSGI config for purbeurre project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

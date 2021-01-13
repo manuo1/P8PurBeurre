@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from app_products.models import FoodCategory, FoodProduct
 
+
 class Command(BaseCommand):
     def handle(self, *args, **options):
         FoodProduct.objects.all().delete()

@@ -1,5 +1,4 @@
-"""
-ASGI config for purbeurre project.
+"""ASGI config for purbeurre project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

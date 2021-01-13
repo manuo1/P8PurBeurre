@@ -5,8 +5,8 @@ API_OFF_PARAMS = {
     'sort_by': 'unique_scans_n',
     'json': 'true',
     'page': 1,
-    'page_size': 1000
-    }
+    'page_size': 1000,
+}
 MAXIMUM_QUANTITY_OF_CATEGORIES_TO_KEEP_PER_PRODUCT = 6
 ESSENTIAL_PRODUCT_DATA = [
     'product_name_fr',
@@ -14,18 +14,18 @@ ESSENTIAL_PRODUCT_DATA = [
     'code',
     'image_url',
     'categories',
-    'nutriments'
+    'nutriments',
 ]
-USEFUL_NUTRIENTS_DATA= [
+USEFUL_NUTRIENTS_DATA = [
     'energy-kj_100g',
     'energy-kcal_100g',
     'proteins_100g',
     'carbohydrates_100g',
     'fat_100g',
     'fiber_100g',
-    'salt_100g'
+    'salt_100g',
 ]
-PRODUCT_TO_ADD_MODEL={
+PRODUCT_TO_ADD_MODEL = {
     'product_name_fr': 'product_name',
     'nutrition_grade_fr': 'nutriscore',
     'code': 'barcode',
@@ -36,5 +36,5 @@ PRODUCT_TO_ADD_MODEL={
     'carbohydrates_100g': 'glucid',
     'fat_100g': 'lipid',
     'fiber_100g': 'fiber',
-    'salt_100g': 'salt'
+    'salt_100g': 'salt',
 }

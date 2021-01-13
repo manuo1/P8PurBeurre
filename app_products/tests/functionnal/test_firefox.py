@@ -1,4 +1,3 @@
-import sys
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.conf import settings
 from selenium import webdriver
@@ -17,7 +16,8 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
         super().setUpClass()
         cls.driver = webdriver.Firefox(
             executable_path=str(
-                    settings.BASE_DIR / 'webdrivers' / 'geckodriver'),
+                settings.BASE_DIR / 'webdrivers' / 'geckodriver'
+            ),
             options=firefox_options,
         )
         cls.driver.implicitly_wait(30)
@@ -32,20 +32,20 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
     def setUp(self):
 
         self.test_category = FoodCategory.objects.create(
-                category_name = 'test_category'
+            category_name='test_category'
         )
         self.test_product = FoodProduct.objects.create(
-                product_name = 'test product name',
-                nutriscore = 'z',
-                barcode = '123',
-                image_url = 'https://static.openfoodfacts.org/test_image.jpg',
-                energy_kj = '123',
-                energy_kcal = '123',
-                protein = '123',
-                glucid = '123',
-                lipid = '123',
-                fiber = '123',
-                salt = '123'
+            product_name='test product name',
+            nutriscore='z',
+            barcode='123',
+            image_url='https://static.openfoodfacts.org/test_image.jpg',
+            energy_kj='123',
+            energy_kcal='123',
+            protein='123',
+            glucid='123',
+            lipid='123',
+            fiber='123',
+            salt='123',
         )
         self.test_product.categories.add(self.test_category)
         self.substitute = FoodProduct.objects.get(pk=self.test_product.pk)
@@ -57,19 +57,20 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
 
         self.driver.get(self.live_server_url)
 
-
     def test_index(self):
         self.driver.find_element_by_id('home').click()
         h1 = self.driver.find_element_by_tag_name('h1').get_attribute(
-            'innerHTML')
-        self.assertTrue( 'Du gras, oui, mais de qualité !' in str(h1))
+            'innerHTML'
+        )
+        self.assertTrue('Du gras, oui, mais de qualité !' in str(h1))
 
     def test_search_return_result(self):
         form = self.driver.find_element_by_id('id_search')
         form.send_keys('test product name')
         form.send_keys(Keys.ENTER)
         card_footer = self.driver.find_element_by_class_name(
-            'card-footer').get_attribute('innerHTML')
+            'card-footer'
+        ).get_attribute('innerHTML')
         self.assertTrue(self.test_product.product_name in str(card_footer))
 
     def test_substitute_return_substitute(self):
@@ -78,5 +79,6 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
         form.send_keys(Keys.ENTER)
         self.driver.find_element_by_class_name('card-footer').click()
         card_link = self.driver.find_element_by_class_name(
-            'card-link').get_attribute('innerHTML')
+            'card-link'
+        ).get_attribute('innerHTML')
         self.assertTrue(self.substitute.product_name in str(card_link))

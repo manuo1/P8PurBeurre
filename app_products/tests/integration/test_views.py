@@ -1,36 +1,40 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from app_products.models import FoodCategory, FoodProduct
-from django.contrib.auth import get_user_model, login
+from django.contrib.auth import get_user_model
+
 
 class TestAppProductsViews(TestCase):
-
     def setUp(self):
         self.client = Client()
         self.User = get_user_model()
         self.test_category = FoodCategory.objects.create(
-                category_name = 'test_category'
+            category_name='test_category'
         )
         self.test_product = FoodProduct.objects.create(
-                product_name = 'test_product_name',
-                nutriscore = 'z',
-                barcode = '123',
-                image_url = 'https://static.openfoodfacts.org/test_image.jpg',
-                energy_kj = '123',
-                energy_kcal = '123',
-                protein = '123',
-                glucid = '123',
-                lipid = '123',
-                fiber = '123',
-                salt = '123'
+            product_name='test_product_name',
+            nutriscore='z',
+            barcode='123',
+            image_url='https://static.openfoodfacts.org/test_image.jpg',
+            energy_kj='123',
+            energy_kcal='123',
+            protein='123',
+            glucid='123',
+            lipid='123',
+            fiber='123',
+            salt='123',
         )
         self.test_product.categories.add(self.test_category)
         self.test_user = self.User.objects.create_user(
-                                    username = 'test_name',
-                                    email = 'test_mail@mail.com',
-                                    password = 'test_password')
+            username='test_name',
+            email='test_mail@mail.com',
+            password='test_password',
+        )
         self.search_form = {'search': self.test_product.product_name}
-        self.login_data = {'username': 'test_name','password': 'test_password'}
+        self.login_data = {
+            'username': 'test_name',
+            'password': 'test_password',
+        }
 
     """ index view Tests """
 
@@ -60,13 +64,13 @@ class TestAppProductsViews(TestCase):
 
     def test_if_substitutes_view_return_substitutes_template(self):
         id = self.test_product.id
-        response = self.client.get(reverse('substitutesPage', args = [id]))
+        response = self.client.get(reverse('substitutesPage', args=[id]))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'substitutes.html')
 
     def test_if_substitutes_view_return_404_if_no_product_to_substitute(self):
         id = FoodProduct.objects.latest('id').id + 1
-        response = self.client.get(reverse('substitutesPage', args = [id]))
+        response = self.client.get(reverse('substitutesPage', args=[id]))
         self.assertEquals(response.status_code, 404)
 
     def test_if_substitutes_view_return_substitutes_list(self):
@@ -78,7 +82,7 @@ class TestAppProductsViews(TestCase):
             new_product.save()
             new_product.categories.add(self.test_category)
         id = self.test_product.id
-        response = self.client.get(reverse('substitutesPage', args = [id]))
+        response = self.client.get(reverse('substitutesPage', args=[id]))
         self.assertEquals(len(response.context['substitutes_list']), 9)
 
     """ favorites view tests """
@@ -105,7 +109,7 @@ class TestAppProductsViews(TestCase):
         self.client.login(**self.login_data)
         user_favorites_before = self.test_user.favorites.count()
         id = self.test_product.id
-        response = self.client.get(reverse('AddFavorites', args = [id]))
+        self.client.get(reverse('AddFavorites', args=[id]))
         user_favorites_after = self.test_user.favorites.count()
         self.assertTrue(user_favorites_after > user_favorites_before)
         self.assertTrue(
@@ -117,7 +121,7 @@ class TestAppProductsViews(TestCase):
         self.test_user.favorites.add(self.test_product)
         user_favorites_before = self.test_user.favorites.count()
         id = self.test_product.id
-        response = self.client.get(reverse('AddFavorites', args = [id]))
+        self.client.get(reverse('AddFavorites', args=[id]))
         user_favorites_after = self.test_user.favorites.count()
         self.assertTrue(user_favorites_after == user_favorites_before)
         self.assertTrue(
@@ -127,20 +131,20 @@ class TestAppProductsViews(TestCase):
     def test_if_favorites_view_return_404_if_no_product_to_substitute(self):
         self.client.login(**self.login_data)
         id = FoodProduct.objects.latest('id').id + 1
-        response = self.client.get(reverse('AddFavorites', args = [id]))
+        response = self.client.get(reverse('AddFavorites', args=[id]))
         self.assertEquals(response.status_code, 404)
 
     """ product_details view tests """
 
     def test_if_product_details_view_return_product_details_template(self):
         id = self.test_product.id
-        response = self.client.get(reverse('productDetailsPage', args = [id]))
+        response = self.client.get(reverse('productDetailsPage', args=[id]))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'product_details.html')
 
     def test_if_product_details_view_return_404_if_no_product_to_save(self):
         id = FoodProduct.objects.latest('id').id + 1
-        response = self.client.get(reverse('productDetailsPage', args = [id]))
+        response = self.client.get(reverse('productDetailsPage', args=[id]))
         self.assertEquals(response.status_code, 404)
 
     """ legal_disclaimers view tests """

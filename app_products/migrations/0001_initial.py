@@ -7,21 +7,39 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
             name='FoodCategory',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('category_name', models.CharField(max_length=300, unique=True)),
+                (
+                    'id',
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'category_name',
+                    models.CharField(max_length=300, unique=True),
+                ),
             ],
         ),
         migrations.CreateModel(
             name='FoodProduct',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
                 ('product_name', models.CharField(max_length=300)),
                 ('nutriscore', models.CharField(max_length=1)),
                 ('barcode', models.PositiveBigIntegerField(unique=True)),
@@ -33,7 +51,10 @@ class Migration(migrations.Migration):
                 ('lipid', models.CharField(max_length=20)),
                 ('fiber', models.CharField(max_length=20)),
                 ('salt', models.CharField(max_length=20)),
-                ('categories', models.ManyToManyField(to='app_products.FoodCategory')),
+                (
+                    'categories',
+                    models.ManyToManyField(to='app_products.FoodCategory'),
+                ),
             ],
         ),
     ]
