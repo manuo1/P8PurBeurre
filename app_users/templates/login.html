@@ -1,7 +1,7 @@
 {% extends 'base.html'%}
+<!-- user login page-->
 {% load static %}
 {% block content %}
-
 <!-- Masthead-->
 <header class="masthead">
   <div class="container h-100">
@@ -10,7 +10,7 @@
         <h2 class="text-white font-weight-bold">Connectez-vous pour plus de fonctionnalités</h2>
         <hr class="divider light my-4" />
         {% for message in messages %}
-        <p id="login-messages"> {{message}} </p>
+        <h3 class="text-white" id="login-messages" > {{message}} </h3>
         {% endfor %}
       </div>
       <div class="col-lg-8 align-self-baseline">

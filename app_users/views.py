@@ -5,8 +5,11 @@ from django.contrib.auth.decorators import login_required
 from app_products.forms import ProductSearchForm
 from .forms import PersonalUserCreationForm
 
+context = {'search_form': ProductSearchForm()}
+
 
 def registerPage(request):
+    """ view to manage user account creation """
     if request.user.is_authenticated:
         return redirect('indexPage')
     form = PersonalUserCreationForm()
@@ -19,20 +22,20 @@ def registerPage(request):
                 request, 'Un nouveau compte vient d\'être créé pour ' + user
             )
             return redirect('loginPage')
-    context = {'search_form': ProductSearchForm(), 'form': form}
-
+    context.update({'form': form})
     return render(request, 'register.html', context)
 
 
 def loginPage(request):
+    """ view to manage user authentication """
     if request.user.is_authenticated:
         return redirect('indexPage')
 
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
         next_url = request.GET.get('next', '/')
+        user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
             if next_url != '/':
@@ -42,17 +45,15 @@ def loginPage(request):
             messages.error(
                 request, 'Nom d\'utilisateur OU mot de passe incorrect'
             )
-    context = {'search_form': ProductSearchForm()}
     return render(request, 'login.html', context)
-
 
 @login_required()
 def logoutCurrentUser(request):
+    """ view to manage user logout """
     logout(request)
     return redirect('indexPage')
 
-
 @login_required()
 def profile(request):
-    context = {'search_form': ProductSearchForm()}
+    """ view to display user profile """
     return render(request, 'profile.html', context)

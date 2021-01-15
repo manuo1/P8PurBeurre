@@ -17,7 +17,7 @@ class Cleaner:
             cleaned_product = {'data': {}, 'categories': []}
             all_data_is_in_the_raw_product = self.all_data_is_in(raw_product)
             if all_data_is_in_the_raw_product:
-                """adds first data."""
+                """adds first data of product_fields_list"""
                 for field in product_fields_list[:4]:
                     cleaned_product['data'][field] = raw_product[field]
                 """adds nutrients"""
@@ -46,7 +46,7 @@ class Cleaner:
         return product
 
     def nutrients(self, product):
-        """return a list of useful nutrient fields in the product."""
+        """return a dictionary of useful nutrient fields in the product."""
         raw_nutrients = product['nutriments']
         cleaned_nutrients = {}
         for field in nutrient_fields_list:

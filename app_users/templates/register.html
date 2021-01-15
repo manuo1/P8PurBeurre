@@ -1,4 +1,5 @@
 {% extends 'base.html'%}
+<!-- account creation page-->
 {% load static %}
 {% block content %}
 
@@ -10,7 +11,7 @@
         <h2 class="text-white font-weight-bold">Création de votre compte</h2>
         <hr class="divider light my-4" />
         {% for field in form %}
-        <p> {{ field.errors }} </p>
+        <h3 class="text-white"> {{ field.errors }} </h3>
         {% endfor %}
       </div>
       <div class="col-lg-8 align-self-baseline text-left">

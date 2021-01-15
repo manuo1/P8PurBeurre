@@ -11,13 +11,17 @@ class Command(BaseCommand):
             Example to add 10 products: \"python manage.py populatedb 10\" """
 
     def add_arguments(self, parser):
+        """ allows the user to set the number of food products"""
+        """ to be loaded into the database."""
         parser.add_argument('quantity', type=int)
 
     def handle(self, *args, **options):
+        """ main controler """
         food_data = self.get_food_products_data(options['quantity'])
         self.add_food_products_in_database(food_data)
 
     def get_food_products_data(self, quantity):
+        """ get food products from open food fact """
         download = Download()
         cleaner = Cleaner()
         data_to_add = []
@@ -35,6 +39,7 @@ class Command(BaseCommand):
         return data_to_add
 
     def add_food_products_in_database(self, data_to_add):
+        """ add cleaned and formated food products in data base """
         for product in data_to_add:
             """add product to the FoodProduct table."""
             product_to_add = FoodProduct(**product['data'])

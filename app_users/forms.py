@@ -4,10 +4,10 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-"""used to add email and first_name fields at Django UserCreationForm"""
-
 
 class PersonalUserCreationForm(UserCreationForm):
+    """ addition of additional fields to the basic user profile """
+    """ and the form-control class for bootstrap"""
     class Meta:
         model = User
         fields = ['username', 'first_name', 'email', 'password1', 'password2']
