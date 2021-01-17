@@ -38,35 +38,3 @@ PRODUCT_TO_ADD_MODEL = {
     'fiber_100g': 'fiber',
     'salt_100g': 'salt',
 }
-
-TEST_PRODUCT = {
-    "useless_1": "nothing",
-    "useless_2": 123,
-    "useless_3": "nothing",
-    "useless_4": ["nothing1","nothing2"],
-    "useless_5": {"nothing": "nothing1"},
-    "product_name_fr": "my name",
-    "nutrition_grade_fr": "e",
-    "code": "1234567891234",
-    "image_url": "https://static.openfoodfacts.org/images/test.jpg",
-    "categories":
-        "Categories-01, Categories âé 02, Cat03, i'm a category 04,"
-        " tested-cat_05, Testing a good category name 06",
-
-    "nutriments": {
-            "energy-kj_100g": 123,
-            "energy-kcal_100g": 1.23456,
-            "proteins_100g": 123,
-            "carbohydrates_100g": 1.23,
-            "fat_100g": 123,
-            "fiber_100g": 1.23456,
-            "salt_100g": 123,
-            "nutr-useless_1": "ab",
-            "nutr-useless_2": "cd",
-            "nutr-useless_3": "ef",
-            "nutr-useless_4": 1.23,
-            "nutr-useless_5": 1.23,
-            "nutr-useless_6": 123,
-    }
-
-}

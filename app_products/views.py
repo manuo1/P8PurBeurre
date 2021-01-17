@@ -13,10 +13,12 @@ context = {'search_form': ProductSearchForm()}
 
 
 def index(request):
+    """ manage the index page """
     return render(request, 'index.html', context)
 
 
 def search(request):
+    """ manage the search page """
     if request.method == 'POST':
         searched_product_name = f_manager.get_search_in(request.POST)
         matching_list = fp_manager.find_matching_food_products_to(
@@ -32,6 +34,7 @@ def search(request):
 
 
 def substitutes(request, selected_product_id):
+    """ manage the substitutes page """
     product_to_substitute = fp_manager.find_product_by_id(selected_product_id)
     substitutes_list = fp_manager.find_substitutes_to(product_to_substitute)
     context.update(
@@ -44,6 +47,7 @@ def substitutes(request, selected_product_id):
 
 
 def product_details(request, selected_product_id):
+    """ manage the product_details page """
     product_to_display = fp_manager.find_product_by_id(selected_product_id)
     context.update({'product_to_display': product_to_display})
     return render(request, 'product_details.html', context)
@@ -51,10 +55,11 @@ def product_details(request, selected_product_id):
 
 @login_required()
 def favorites(request, product_to_save_id=None):
-    """get current user."""
+    """ manage the favorites (add and display) page """
     current_user = request.user
     product_to_save = None
     current_user_favorites_list = u_manager.get_favorites_list(current_user)
+
     if product_to_save_id is not None:
         product_to_save = fp_manager.find_product_by_id(product_to_save_id)
         if product_to_save in current_user_favorites_list:
@@ -75,4 +80,5 @@ def favorites(request, product_to_save_id=None):
 
 
 def legal_disclaimers(request):
+    """ manage the legal_disclaimers page """
     return render(request, 'legal_disclaimers.html', context)

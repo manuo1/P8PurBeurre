@@ -10193,9 +10193,12 @@ header.masthead h1 {
 }
 
 .bg-img-product{
-  background-color:rgba(0, 0, 0, 0.75);
   background-position: center;
   background-repeat: repeat;
   background-size: contain;
-  text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+
+}
+
+.border-3 {
+    border-width:3px !important;
 }

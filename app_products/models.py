@@ -6,10 +6,12 @@ from django.shortcuts import get_object_or_404
 
 class FoodProductsManager(models.Manager):
     def find_product_by_id(self, id):
+        """ return the object corresponding to the requested id """
         product = get_object_or_404(FoodProduct, id=id)
         return product
 
     def find_matching_food_products_to(self, searched_product_name):
+        """ returns a list of objects corresponding to the searched words """
         matching_list = []
         matching_list = (
             FoodProduct.objects.annotate(search=SearchVector('product_name'))
@@ -21,6 +23,9 @@ class FoodProductsManager(models.Manager):
         return matching_list
 
     def find_substitutes_to(self, product_to_substitute):
+        """Returns a list of food products that have the greatest number of
+        categories in common with the product to be substituted and a lower
+         nutrient score."""
         substitutes_list = []
         product_to_substitute_categories = (
             product_to_substitute.categories.all()
@@ -49,6 +54,8 @@ class FoodProductsManager(models.Manager):
 
 
 class FoodCategory(models.Model):
+    """ stock all categories """
+
     category_name = models.CharField(max_length=300, unique=True)
 
     def __str__(self):
@@ -56,6 +63,7 @@ class FoodCategory(models.Model):
 
 
 class FoodProduct(models.Model):
+    """ stock food product data"""
 
     product_name = models.CharField(max_length=300)
     nutriscore = models.CharField(max_length=1)
@@ -68,7 +76,7 @@ class FoodProduct(models.Model):
     lipid = models.CharField(max_length=20)
     fiber = models.CharField(max_length=20)
     salt = models.CharField(max_length=20)
-
+    """ associates food products with their categories """
     categories = models.ManyToManyField(FoodCategory)
 
     def __str__(self):

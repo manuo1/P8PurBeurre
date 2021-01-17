@@ -9,7 +9,7 @@ context = {'search_form': ProductSearchForm()}
 
 
 def registerPage(request):
-    """ view to manage user account creation """
+    """ manage user account creation page"""
     if request.user.is_authenticated:
         return redirect('indexPage')
     form = PersonalUserCreationForm()
@@ -27,7 +27,7 @@ def registerPage(request):
 
 
 def loginPage(request):
-    """ view to manage user authentication """
+    """ manage user authentication page"""
     if request.user.is_authenticated:
         return redirect('indexPage')
 
@@ -47,13 +47,15 @@ def loginPage(request):
             )
     return render(request, 'login.html', context)
 
+
 @login_required()
 def logoutCurrentUser(request):
-    """ view to manage user logout """
+    """ manage user logout page"""
     logout(request)
     return redirect('indexPage')
 
+
 @login_required()
 def profile(request):
-    """ view to display user profile """
+    """ manage user profile page"""
     return render(request, 'profile.html', context)

@@ -10,10 +10,10 @@ class Command(BaseCommand):
             Requires a quantity of food products to be added,
             Example to add 10 products: \"python manage.py populatedb 10\" """
 
-    def add_arguments(self, parser):
+    def add_arguments(self, populatedb):
         """ allows the user to set the number of food products"""
         """ to be loaded into the database."""
-        parser.add_argument('quantity', type=int)
+        populatedb.add_argument('quantity', type=int)
 
     def handle(self, *args, **options):
         """ main controler """
@@ -65,13 +65,17 @@ class Command(BaseCommand):
                 """ then builds the association"""
                 product_to_associate.categories.add(category_to_associate)
 
+        products_qty = FoodProduct.objects.all().count()
+        categories_qty = FoodCategory.objects.all().count()
+        joins_qty = FoodProduct.objects.filter(categories__gte=1).count()
+        total_rows_for_food_data = products_qty + categories_qty + joins_qty
+
         self.stdout.write(
-            '{} aliments présents dans la base'.format(
-                FoodProduct.objects.all().count()
-            )
-        )
-        self.stdout.write(
-            '{} categories présentes dans la base'.format(
-                FoodCategory.objects.all().count()
+            '{} lignes en base pour les données alimentaires\n'
+            '({} aliments, {} categories, {} jointures)'.format(
+                total_rows_for_food_data,
+                products_qty,
+                categories_qty,
+                joins_qty,
             )
         )

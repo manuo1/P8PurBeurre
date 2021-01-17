@@ -42,8 +42,7 @@ class ViewsUnitTest(TestCase):
         request = self.factory.get('/substitutes/999')
         request.method = 'POST'
         with mock.patch(
-            'app_products.views.FoodProductsManager.'
-            'find_product_by_id',
+            'app_products.views.FoodProductsManager.' 'find_product_by_id',
             return_value=[self.test_product],
         ):
             with mock.patch(

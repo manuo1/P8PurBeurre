@@ -5,6 +5,7 @@ from app_products.models import FoodProduct
 
 class UsersManager(models.Manager):
     """ addition of a manager to the User class """
+
     def get_favorites_list(self, user):
         current_user_favorites_list = user.favorites.all()
         return current_user_favorites_list
@@ -15,4 +16,5 @@ class UsersManager(models.Manager):
 
 class User(AbstractUser):
     """addition of a relationship many to many """
+
     favorites = models.ManyToManyField(FoodProduct)

@@ -7,7 +7,9 @@ User = get_user_model()
 
 class PersonalUserCreationForm(UserCreationForm):
     """ addition of additional fields to the basic user profile """
+
     """ and the form-control class for bootstrap"""
+
     class Meta:
         model = User
         fields = ['username', 'first_name', 'email', 'password1', 'password2']
