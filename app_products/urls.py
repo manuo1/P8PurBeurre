@@ -4,7 +4,6 @@ from app_products import views
 
 urlpatterns = [
     path('', views.index, name='indexPage'),
-    path('/', views.index, name='indexPage'),
     path('search', views.search, name='search'),
     path(
         'substitutes/<int:selected_product_id>',
