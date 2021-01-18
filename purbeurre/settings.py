@@ -26,8 +26,8 @@ SECRET_KEY = os.environ['SECRET_KEY']
 #DEBUG = False if os.environ.get("ENV", "development") == "production" else True
 DEBUG = True
 
-#ALLOWED_HOSTS = ["purbeurre-mo1.herokuapp.com", "localhost", "127.0.0.1"]
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["purbeurre-mo1.herokuapp.com", "localhost", "127.0.0.1"]
+#ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
