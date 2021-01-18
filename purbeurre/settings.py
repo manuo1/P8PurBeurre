@@ -153,8 +153,7 @@ LOGIN_REDIRECT_URL = 'profilePage'
 
 django_heroku.settings(locals())
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+    
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
