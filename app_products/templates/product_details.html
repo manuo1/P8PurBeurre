@@ -22,7 +22,7 @@
     <div class="container-fluid h-75 w-100 overflow-auto">
       <div class="row text-center">
         <div class="col-sm-12 col-md-6">
-          {% with '/assets/img/Nutri-Score/Nutri-Score-multi-'|add:product_to_display.nutriscore|add:'.png' as path %}
+          {% with 'assets/img/Nutri-Score/Nutri-Score-multi-'|add:product_to_display.nutriscore|add:'.png' as path %}
           <img class="w-50" src="{% static path %}" alt="{{product_to_display.nutriscore}}" >
           {% endwith %}
         </div>
