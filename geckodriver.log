@@ -1,171 +1,50 @@
-1610557619661	geckodriver	INFO	Listening on 127.0.0.1:56669
-1610557622725	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofiletDTKO8"
+1610973635891	geckodriver	INFO	Listening on 127.0.0.1:50600
+1610973638989	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofilea0NAM8"
 *** You are running in headless mode.
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610557625944	Marionette	INFO	Listening on port 56677
-1610557626351	Marionette	WARN	TLS certificate errors will be ignored for this session
-JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
-1610557630805	Marionette	INFO	Stopped listening on port 56677
-1610558555623	geckodriver	INFO	Listening on 127.0.0.1:57238
-1610558558676	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofilettPn15"
+1610973640644	Marionette	INFO	Listening on port 50608
+1610973641055	Marionette	WARN	TLS certificate errors will be ignored for this session
+Marionette threw an error: NotFoundError: WindowGlobalParent.getActor: No such JSWindowActor 'MarionetteCommands'
+getMarionetteCommandsActorProxy/get/<@chrome://marionette/content/actors/MarionetteCommandsParent.jsm:330:69
+GeckoDriver.prototype.deleteSession@chrome://marionette/content/driver.js:3034:17
+onClosed@chrome://marionette/content/server.js:196:17
+close@chrome://marionette/content/transport.js:225:18
+onInputStreamReady@chrome://marionette/content/transport.js:379:14
+
+1610973741297	geckodriver	INFO	Listening on 127.0.0.1:50687
+1610973744320	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofileOrY2YL"
 *** You are running in headless mode.
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610558561551	Marionette	INFO	Listening on port 57248
-1610558561854	Marionette	WARN	TLS certificate errors will be ignored for this session
-JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
-1610558565357	Marionette	INFO	Stopped listening on port 57248
-1610559297559	geckodriver	INFO	Listening on 127.0.0.1:64136
-1610559300669	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofileo2NfX4"
+1610973746603	Marionette	INFO	Listening on port 50697
+1610973746985	Marionette	WARN	TLS certificate errors will be ignored for this session
+1610973839615	Marionette	INFO	Stopped listening on port 50697
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1610974162976	geckodriver	INFO	Listening on 127.0.0.1:51284
+1610974166051	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofilelPdIJb"
 *** You are running in headless mode.
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610559302562	Marionette	INFO	Listening on port 64146
-1610559302708	Marionette	WARN	TLS certificate errors will be ignored for this session
-JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
-1610559317704	Marionette	INFO	Stopped listening on port 64146
-1610559376696	geckodriver	INFO	Listening on 127.0.0.1:64257
-1610559379734	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofileZLYFWU"
+1610974167722	Marionette	INFO	Listening on port 51292
+1610974168083	Marionette	WARN	TLS certificate errors will be ignored for this session
+1610974261988	Marionette	INFO	Stopped listening on port 51292
+1610974502587	geckodriver	INFO	Listening on 127.0.0.1:51375
+1610974505643	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofileOFbA3l"
 *** You are running in headless mode.
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610559381270	Marionette	INFO	Listening on port 64265
-1610559381765	Marionette	WARN	TLS certificate errors will be ignored for this session
-JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
-1610559389169	Marionette	INFO	Stopped listening on port 64265
-JavaScript error: resource:///actors/ContentMetaChild.jsm, line 179: InvalidStateError: JSWindowActorChild.sendAsyncMessage: JSWindowActorChild cannot send at the moment
-1610559853822	geckodriver	INFO	Listening on 127.0.0.1:64428
-1610559856907	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofileVs1Q97"
+1610974507177	Marionette	INFO	Listening on port 51383
+1610974508375	Marionette	WARN	TLS certificate errors will be ignored for this session
+Marionette threw an error: NotFoundError: WindowGlobalParent.getActor: No such JSWindowActor 'MarionetteCommands'
+getMarionetteCommandsActorProxy/get/<@chrome://marionette/content/actors/MarionetteCommandsParent.jsm:330:69
+GeckoDriver.prototype.deleteSession@chrome://marionette/content/driver.js:3034:17
+onClosed@chrome://marionette/content/server.js:196:17
+close@chrome://marionette/content/transport.js:225:18
+onInputStreamReady@chrome://marionette/content/transport.js:379:14
+
+1610974557488	geckodriver	INFO	Listening on 127.0.0.1:51446
+1610974560525	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofile6PcOkd"
 *** You are running in headless mode.
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610559860284	Marionette	INFO	Listening on port 64438
-1610559860545	Marionette	WARN	TLS certificate errors will be ignored for this session
-JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
-1610559864799	Marionette	INFO	Stopped listening on port 64438
-1610559972145	geckodriver	INFO	Listening on 127.0.0.1:64533
-1610559975765	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofilejNJMNy"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610559977486	Marionette	INFO	Listening on port 64543
-1610559977787	Marionette	WARN	TLS certificate errors will be ignored for this session
-1610559986306	Marionette	INFO	Stopped listening on port 64543
-1610571855347	geckodriver	INFO	Listening on 127.0.0.1:49929
-1610571858391	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofile66SUYb"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610571860384	Marionette	INFO	Listening on port 49937
-1610571860427	Marionette	WARN	TLS certificate errors will be ignored for this session
-1610571865630	Marionette	INFO	Stopped listening on port 49937
-1610571866285	geckodriver	INFO	Listening on 127.0.0.1:50014
-1610571869343	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofileK3vNgR"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610571870900	Marionette	INFO	Listening on port 50022
-1610571871378	Marionette	WARN	TLS certificate errors will be ignored for this session
-JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
-1610571874165	Marionette	INFO	Stopped listening on port 50022
-1610572854880	geckodriver	INFO	Listening on 127.0.0.1:50548
-1610572857943	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofilevmIdkl"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610572859406	Marionette	INFO	Listening on port 50556
-1610572859477	Marionette	WARN	TLS certificate errors will be ignored for this session
-JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
-1610572862252	Marionette	INFO	Stopped listening on port 50556
-1610614986579	geckodriver	INFO	Listening on 127.0.0.1:53497
-1610614989567	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofile6XXFXn"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610614991357	Marionette	INFO	Listening on port 53505
-1610614991613	Marionette	WARN	TLS certificate errors will be ignored for this session
-1610614999163	Marionette	INFO	Stopped listening on port 53505
-1610614999777	geckodriver	INFO	Listening on 127.0.0.1:53579
-1610615002841	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofileJl0qn3"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610615004536	Marionette	INFO	Listening on port 53587
-1610615004880	Marionette	WARN	TLS certificate errors will be ignored for this session
-JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
-1610615007867	Marionette	INFO	Stopped listening on port 53587
-1610615126613	geckodriver	INFO	Listening on 127.0.0.1:53710
-1610615129664	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofilerYqr7L"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610615131888	Marionette	INFO	Listening on port 53720
-1610615132328	Marionette	WARN	TLS certificate errors will be ignored for this session
-1610615140031	Marionette	INFO	Stopped listening on port 53720
-1610615140676	geckodriver	INFO	Listening on 127.0.0.1:53807
-1610615143722	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofileaQnjFk"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610615146309	Marionette	INFO	Listening on port 53815
-1610615146383	Marionette	WARN	TLS certificate errors will be ignored for this session
-JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
-1610615149072	Marionette	INFO	Stopped listening on port 53815
-1610615217625	geckodriver	INFO	Listening on 127.0.0.1:53940
-1610615221759	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofileHsXFcD"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610615223574	Marionette	INFO	Listening on port 53951
-1610615223803	Marionette	WARN	TLS certificate errors will be ignored for this session
-1610615230371	Marionette	INFO	Stopped listening on port 53951
-1610615231558	geckodriver	INFO	Listening on 127.0.0.1:54038
-1610615234619	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofile9K3ayF"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610615236409	Marionette	INFO	Listening on port 54049
-1610615236677	Marionette	WARN	TLS certificate errors will be ignored for this session
-JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
-1610615239723	Marionette	INFO	Stopped listening on port 54049
-1610632088877	geckodriver	INFO	Listening on 127.0.0.1:57386
-1610632091924	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofilenDDMbJ"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610632093651	Marionette	INFO	Listening on port 57394
-1610632093960	Marionette	WARN	TLS certificate errors will be ignored for this session
-1610632098939	Marionette	INFO	Stopped listening on port 57394
-1610632099748	geckodriver	INFO	Listening on 127.0.0.1:57469
-1610632102799	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofileAU0R1C"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610632104413	Marionette	INFO	Listening on port 57478
-1610632104851	Marionette	WARN	TLS certificate errors will be ignored for this session
-JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
-1610632107521	Marionette	INFO	Stopped listening on port 57478
-1610661593357	geckodriver	INFO	Listening on 127.0.0.1:50250
-1610661597222	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofilekg0EDD"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610661602020	Marionette	INFO	Listening on port 50263
-1610661602672	Marionette	WARN	TLS certificate errors will be ignored for this session
-JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
-1610661607914	Marionette	INFO	Stopped listening on port 50263
-1610802553963	geckodriver	INFO	Listening on 127.0.0.1:55543
-1610802556928	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofiledAKW8R"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610802560144	Marionette	INFO	Listening on port 55551
-1610802560637	Marionette	WARN	TLS certificate errors will be ignored for this session
-1610802570810	Marionette	INFO	Stopped listening on port 55551
-JavaScript error: resource:///actors/ContentMetaChild.jsm, line 179: InvalidStateError: JSWindowActorChild.sendAsyncMessage: JSWindowActorChild cannot send at the moment
-1610802572114	geckodriver	INFO	Listening on 127.0.0.1:55637
-1610802575178	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofile9sauvJ"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610802578370	Marionette	INFO	Listening on port 55645
-1610802578871	Marionette	WARN	TLS certificate errors will be ignored for this session
-JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
-1610802584481	Marionette	INFO	Stopped listening on port 55645
-JavaScript error: resource://gre/modules/UrlClassifierListManager.jsm, line 691: TypeError: this.tablesData[table] is undefined
-1610826488625	geckodriver	INFO	Listening on 127.0.0.1:59803
-1610826491656	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofileoF5Ghb"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610826493618	Marionette	INFO	Listening on port 59815
-1610826493709	Marionette	WARN	TLS certificate errors will be ignored for this session
-1610826499881	Marionette	INFO	Stopped listening on port 59815
-1610826500746	geckodriver	INFO	Listening on 127.0.0.1:59908
-1610826503778	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\manuo\\AppData\\Local\\Temp\\rust_mozprofilenjtKqC"
-*** You are running in headless mode.
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
-1610826505554	Marionette	INFO	Listening on port 59920
-1610826505818	Marionette	WARN	TLS certificate errors will be ignored for this session
-JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
-1610826508898	Marionette	INFO	Stopped listening on port 59920
+1610974562227	Marionette	INFO	Listening on port 51454
+1610974563268	Marionette	WARN	TLS certificate errors will be ignored for this session
+1610974570547	Marionette	INFO	Stopped listening on port 51454
