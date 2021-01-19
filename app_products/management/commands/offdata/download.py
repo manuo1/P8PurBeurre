@@ -1,5 +1,7 @@
 import requests
-from .constants import API_OFF_URL as url, API_OFF_PARAMS as params
+
+from .constants import API_OFF_PARAMS as params
+from .constants import API_OFF_URL as url
 
 
 class Download:

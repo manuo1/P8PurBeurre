@@ -1,5 +1,7 @@
 from unittest import mock
+
 from django.test import RequestFactory, TestCase
+
 from app_products.views import index, search, substitutes
 
 
@@ -12,7 +14,7 @@ class ViewsUnitTest(TestCase):
             def __init__(self):
                 self.id = 123
                 self.product_name = 'test product name'
-                self.nutriscore = 'z'
+                self.nutriscore = 'e'
 
         self.test_product = MockObject()
 

@@ -1,13 +1,8 @@
 from django.test import SimpleTestCase
-from django.urls import reverse, resolve
-from app_products.views import (
-    index,
-    search,
-    substitutes,
-    product_details,
-    favorites,
-    legal_disclaimers,
-)
+from django.urls import resolve, reverse
+
+from app_products.views import (favorites, index, legal_disclaimers,
+                                product_details, search, substitutes)
 
 
 class TestAppProductsUrls(SimpleTestCase):

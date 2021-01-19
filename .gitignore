@@ -1,3 +1,4 @@
 P8venv/
 .env
-__pycache__/
+__pycache__
+.coverage

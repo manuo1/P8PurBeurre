@@ -2,8 +2,8 @@
 
 import django.contrib.auth.models
 import django.contrib.auth.validators
-from django.db import migrations, models
 import django.utils.timezone
+from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
@@ -63,8 +63,8 @@ class Migration(migrations.Migration):
                         max_length=150,
                         unique=True,
                         validators=[
-                            django.contrib.auth.validators
-                            .UnicodeUsernameValidator()
+                            django.contrib.auth.validators.
+                            UnicodeUsernameValidator()
                         ],
                         verbose_name='username',
                     ),

@@ -1,9 +1,8 @@
-from .constants import (
-    ESSENTIAL_PRODUCT_DATA as product_fields_list,
-    USEFUL_NUTRIENTS_DATA as nutrient_fields_list,
-    MAXIMUM_QUANTITY_OF_CATEGORIES_TO_KEEP_PER_PRODUCT as max_of_categories,
-    PRODUCT_TO_ADD_MODEL as product_model,
-)
+from .constants import ESSENTIAL_PRODUCT_DATA as product_fields_list
+from .constants import \
+    MAXIMUM_QUANTITY_OF_CATEGORIES_TO_KEEP_PER_PRODUCT as max_of_categories
+from .constants import PRODUCT_TO_ADD_MODEL as product_model
+from .constants import USEFUL_NUTRIENTS_DATA as nutrient_fields_list
 
 
 class Cleaner:
@@ -17,7 +16,7 @@ class Cleaner:
             cleaned_product = {'data': {}, 'categories': []}
             all_data_is_in_the_raw_product = self.all_data_is_in(raw_product)
             if all_data_is_in_the_raw_product:
-                """adds first data of product_fields_list"""
+                """adds first data of product_fields_list."""
                 for field in product_fields_list[:4]:
                     cleaned_product['data'][field] = raw_product[field]
                 """adds nutrients"""

@@ -1,10 +1,11 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
+
 from app_products.models import FoodProduct
 
 
 class UsersManager(models.Manager):
-    """ addition of a manager to the User class """
+    """addition of a manager to the User class."""
 
     def get_favorites_list(self, user):
         current_user_favorites_list = user.favorites.all()
@@ -15,6 +16,6 @@ class UsersManager(models.Manager):
 
 
 class User(AbstractUser):
-    """addition of a relationship many to many """
+    """addition of a relationship many to many."""
 
     favorites = models.ManyToManyField(FoodProduct)

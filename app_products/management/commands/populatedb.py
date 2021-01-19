@@ -1,8 +1,10 @@
 from django.core.management.base import BaseCommand
 from django.db.utils import IntegrityError
-from app_products.models import FoodProduct, FoodCategory
-from .offdata.download import Download
+
+from app_products.models import FoodCategory, FoodProduct
+
 from .offdata.cleaner import Cleaner
+from .offdata.download import Download
 
 
 class Command(BaseCommand):
@@ -11,17 +13,17 @@ class Command(BaseCommand):
             Example to add 10 products: \"python manage.py populatedb 10\" """
 
     def add_arguments(self, populatedb):
-        """ allows the user to set the number of food products"""
+        """allows the user to set the number of food products."""
         """ to be loaded into the database."""
         populatedb.add_argument('quantity', type=int)
 
     def handle(self, *args, **options):
-        """ main controler """
+        """main controler."""
         food_data = self.get_food_products_data(options['quantity'])
         self.add_food_products_in_database(food_data)
 
     def get_food_products_data(self, quantity):
-        """ get food products from open food fact """
+        """get food products from open food fact."""
         download = Download()
         cleaner = Cleaner()
         data_to_add = []
@@ -39,7 +41,7 @@ class Command(BaseCommand):
         return data_to_add
 
     def add_food_products_in_database(self, data_to_add):
-        """ add cleaned and formated food products in data base """
+        """add cleaned and formated food products in data base."""
         for product in data_to_add:
             """add product to the FoodProduct table."""
             product_to_add = FoodProduct(**product['data'])

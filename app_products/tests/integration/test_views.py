@@ -1,7 +1,8 @@
-from django.test import TestCase, Client
-from django.urls import reverse
-from app_products.models import FoodCategory, FoodProduct
 from django.contrib.auth import get_user_model
+from django.test import Client, TestCase
+from django.urls import reverse
+
+from app_products.models import FoodCategory, FoodProduct
 
 
 class TestAppProductsViews(TestCase):
@@ -13,7 +14,7 @@ class TestAppProductsViews(TestCase):
         )
         self.test_product = FoodProduct.objects.create(
             product_name='test_product_name',
-            nutriscore='z',
+            nutriscore='e',
             barcode='123',
             image_url='https://static.openfoodfacts.org/test_image.jpg',
             energy_kj='123',

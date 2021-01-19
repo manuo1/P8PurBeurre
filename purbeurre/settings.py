@@ -9,8 +9,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
-import django_heroku
 from pathlib import Path
+
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
+DEBUG = False if os.environ.get("ENV", "development") == "production" else True
 
 ALLOWED_HOSTS = ["purbeurre-mo1.herokuapp.com", "localhost", "127.0.0.1"]
 
@@ -135,8 +137,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = [ os.path.join(BASE_DIR, "staticfiles"), ]
-STATICFILES_DIRS = [ os.path.join(BASE_DIR, "static"), ]
+STATIC_ROOT = [
+    os.path.join(BASE_DIR, "staticfiles"),
+]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 
 AUTH_USER_MODEL = 'app_users.User'
@@ -151,14 +157,14 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': ('%(asctime)s [%(process)d] [%(levelname)s] ' +
-                       'pathname=%(pathname)s lineno=%(lineno)s ' +
-                       'funcname=%(funcName)s %(message)s'),
-            'datefmt': '%Y-%m-%d %H:%M:%S'
+            'format': (
+                '%(asctime)s [%(process)d] [%(levelname)s] '
+                + 'pathname=%(pathname)s lineno=%(lineno)s '
+                + 'funcname=%(funcName)s %(message)s'
+            ),
+            'datefmt': '%Y-%m-%d %H:%M:%S',
         },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        }
+        'simple': {'format': '%(levelname)s %(message)s'},
     },
     'handlers': {
         'null': {
@@ -168,15 +174,15 @@ LOGGING = {
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        }
+            'formatter': 'verbose',
+        },
     },
     'loggers': {
         'testlogger': {
             'handlers': ['console'],
             'level': 'INFO',
         }
-    }
+    },
 }
 
 DEBUG_PROPAGATE_EXCEPTIONS = True

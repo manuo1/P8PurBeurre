@@ -1,15 +1,17 @@
-from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect, render
+
 from app_products.forms import ProductSearchForm
+
 from .forms import PersonalUserCreationForm
 
 context = {'search_form': ProductSearchForm()}
 
 
 def registerPage(request):
-    """ manage user account creation page"""
+    """manage user account creation page."""
     if request.user.is_authenticated:
         return redirect('indexPage')
     form = PersonalUserCreationForm()
@@ -27,7 +29,7 @@ def registerPage(request):
 
 
 def loginPage(request):
-    """ manage user authentication page"""
+    """manage user authentication page."""
     if request.user.is_authenticated:
         return redirect('indexPage')
 
@@ -50,12 +52,12 @@ def loginPage(request):
 
 @login_required()
 def logoutCurrentUser(request):
-    """ manage user logout page"""
+    """manage user logout page."""
     logout(request)
     return redirect('indexPage')
 
 
 @login_required()
 def profile(request):
-    """ manage user profile page"""
+    """manage user profile page."""
     return render(request, 'profile.html', context)

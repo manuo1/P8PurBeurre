@@ -1,4 +1,5 @@
 from django.test import TestCase
+
 from app_products.models import FoodCategory, FoodProduct
 
 
@@ -10,7 +11,7 @@ class TestModels(TestCase):
         )
         self.test_product = FoodProduct.objects.create(
             product_name='test_product_name',
-            nutriscore='z',
+            nutriscore='e',
             barcode='123',
             image_url='https://static.openfoodfacts.org/test_image.jpg',
             energy_kj='123',

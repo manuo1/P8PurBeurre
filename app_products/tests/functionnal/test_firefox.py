@@ -1,11 +1,14 @@
-from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.conf import settings
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+
 from app_products.models import FoodCategory, FoodProduct
 
 firefox_options = webdriver.FirefoxOptions()
 firefox_options.add_argument('--headless')
+firefox_options.add_argument('window-size=1600x900')
+firefox_options.set_preference("browser.privatebrowsing.autostart", True)
 
 
 class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
@@ -22,7 +25,6 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
         )
         cls.driver.implicitly_wait(30)
         cls.driver.maximize_window()
-        cls.driver.set_page_load_timeout(30)
 
     @classmethod
     def tearDownClass(cls):
@@ -36,7 +38,7 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
         )
         self.test_product = FoodProduct.objects.create(
             product_name='test product name',
-            nutriscore='z',
+            nutriscore='e',
             barcode='123',
             image_url='https://static.openfoodfacts.org/test_image.jpg',
             energy_kj='123',
